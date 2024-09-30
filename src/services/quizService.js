@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/quizzes';
+const API_URL = 'https://assignment1-snd.onrender.com/api/quizzes';
 
 const quizService = {
   getAllQuizzes: async () => {
