@@ -1,0 +1,135 @@
+/* Center text for the application */
+.App {
+  text-align: center;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Adjusted logo height */
+.App-logo {
+  height: 30vmin;
+  pointer-events: none;
+}
+
+/* Animation for logo spin */
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 15s linear; /* Slightly faster rotation */
+  }
+}
+
+/* Header styling for the app */
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(12px + 2vmin); /* Adjusted for better readability */
+  color: white;
+  padding: 20px;
+}
+
+/* Link styling */
+.App-link {
+  color: #61dafb;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.App-link:hover {
+  text-decoration: underline;
+}
+
+/* Animation for the app logo spin */
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* New section for quiz list styling */
+.quiz-list {
+  margin: 20px auto;
+  padding: 0;
+  max-width: 600px;
+  list-style-type: none;
+}
+
+.quiz-item {
+  background-color: #fff;
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s; /* Added smooth hover transition */
+}
+
+.quiz-item:hover {
+  background-color: #f5f5f5;
+  transform: scale(1.02); /* Slight scale on hover */
+}
+
+.quiz-item a {
+  color: #007BFF;
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.quiz-item a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .quiz-item {
+    width: 90%;
+    margin: 10px auto;
+  }
+}
+
+/* Footer styling */
+footer {
+  margin-top: 40px;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* Additional styling for better visual hierarchy */
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.view-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit-btn {
+  background-color: #ffc107;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}

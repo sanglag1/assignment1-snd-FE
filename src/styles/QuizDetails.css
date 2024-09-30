@@ -1,0 +1,20 @@
+.quiz-details {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .quiz-details h2 {
+    margin-bottom: 15px;
+  }
+  
+  .quiz-details ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .quiz-details li {
+    margin-bottom: 10px;
+  }
+  

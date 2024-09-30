@@ -1,0 +1,43 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #e0f7fa; /* Màu nền nhẹ nhàng hơn (xanh nhạt) */
+    color: #333; /* Màu chữ tối hơn để dễ đọc */
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .home h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .home p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    max-width: 600px; /* Giới hạn chiều rộng của đoạn văn */
+  }
+  
+  .button-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .home-button {
+    background-color: #00796b; /* Màu nền nút nhẹ nhàng hơn (xanh lục) */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .home-button:hover {
+    background-color: #004d40; /* Màu nền khi hover */
+  }
+  
