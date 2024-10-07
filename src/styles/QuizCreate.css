@@ -36,4 +36,17 @@
   .quiz-create button:hover {
     background-color: #c0392b;
   }
+  .back-btn {
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    margin-top: 15px; 
+  }
+  
+  .back-btn:hover {
+    background-color: #2980b9; 
+  }
   

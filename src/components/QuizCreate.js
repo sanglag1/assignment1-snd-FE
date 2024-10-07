@@ -7,13 +7,13 @@ const QuizCreate = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [questions, setQuestions] = useState([]);
-  const [newQuestion, setNewQuestion] = useState({ text: '', options: ['', '', '', ''], correctAnswerIndex: 0 }); // Khởi tạo 4 option
+  const [newQuestion, setNewQuestion] = useState({ text: '', options: ['', '', '', ''], correctAnswerIndex: 0 });
   const navigate = useNavigate();
 
   const handleAddQuestion = () => {
     if (newQuestion.text && newQuestion.options.length > 0 && newQuestion.options.some(option => option)) {
       setQuestions(prev => [...prev, newQuestion]);
-      setNewQuestion({ text: '', options: ['', '', '', ''], correctAnswerIndex: 0 }); // Đặt lại 4 option cho câu hỏi mới
+      setNewQuestion({ text: '', options: ['', '', '', ''], correctAnswerIndex: 0 });
     } else {
       alert("Please fill in the question and at least one option.");
     }
@@ -37,6 +37,10 @@ const QuizCreate = () => {
     }
   };
 
+  const handleBackToView = () => {
+    navigate('/quizzes');
+  };
+
   return (
     <div className="quiz-create">
       <h2>Create Quiz</h2>
@@ -54,13 +58,14 @@ const QuizCreate = () => {
       ))}
       <button onClick={handleAddQuestion}>Add Question</button>
 
-      <select value={newQuestion.correctAnswerIndex} onChange={(e) => setNewQuestion({ ...newQuestion, correctAnswerIndex: e.target.value })}>
+      <select value={newQuestion.correctAnswerIndex} onChange={(e) => setNewQuestion({ ...newQuestion, correctAnswerIndex: Number(e.target.value) })}>
         {newQuestion.options.map((_, index) => (
           <option key={index} value={index}>Option {index + 1}</option>
         ))}
       </select>
 
       <button onClick={handleCreateQuiz}>Create Quiz</button>
+      <button className="back-btn" onClick={handleBackToView}>Back to View</button>
     </div>
   );
 };

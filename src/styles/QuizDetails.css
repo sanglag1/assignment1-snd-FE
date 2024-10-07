@@ -1,20 +1,106 @@
-.quiz-details {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .quiz-details h2 {
-    margin-bottom: 15px;
-  }
-  
-  .quiz-details ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .quiz-details li {
-    margin-bottom: 10px;
-  }
-  
+.quiz-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.quiz-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.question-text {
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.options-container {
+  margin-bottom: 20px;
+}
+
+.option {
+  margin: 5px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.option:hover {
+  background-color: #f0f0f0;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.check-answer-btn,
+.prev-btn,
+.next-btn,
+.back-home-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.check-answer-btn {
+  background-color: #3498db;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.check-answer-btn:hover {
+  background-color: #2980b9;
+}
+
+.prev-btn,
+.next-btn {
+  background-color: #2ecc71;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  background-color: #27ae60;
+}
+
+.feedback {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #e74c3c;
+  text-align: center;
+}
+
+.back-home-btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  background-color: #e74c3c;
+  color: white;
+  margin-top: 30px;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.back-home-btn:hover {
+  background-color: #c0392b;
+}

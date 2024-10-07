@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import quizService from '../services/quizService';
 import { useParams, useNavigate } from 'react-router-dom';
+import '../styles/QuizDetails.css';
 
 const QuizDetails = () => {
   const { quizId } = useParams();
@@ -16,7 +17,6 @@ const QuizDetails = () => {
         console.error("Quiz ID is undefined");
         return;
       }
-  
       try {
         const quizData = await quizService.getQuizById(quizId);
         setQuiz(quizData);
@@ -26,7 +26,6 @@ const QuizDetails = () => {
     };
     fetchQuiz();
   }, [quizId]);
-  
 
   const handleAnswerSelection = (questionIndex, optionIndex) => {
     setSelectedAnswers(prev => ({
@@ -38,12 +37,10 @@ const QuizDetails = () => {
   const handleCheckAnswers = (questionIndex) => {
     const question = quiz.questions[questionIndex];
     const selectedAnswer = selectedAnswers[questionIndex];
-
     if (selectedAnswer === undefined) {
       setFeedback('Please select an answer before checking.');
       return;
     }
-
     if (selectedAnswer === question.correctAnswerIndex) {
       setFeedback('Correct!');
     } else {
@@ -74,25 +71,31 @@ const QuizDetails = () => {
   const question = quiz.questions[currentQuestionIndex];
 
   return (
-    <div>
-      <h2>{quiz.title}</h2>
-      <h3>{question.text}</h3>
-      {question.options.map((option, optionIndex) => (
-        <div key={optionIndex}>
-          <input
-            type="radio"
-            name={`question${currentQuestionIndex}`}
-            checked={selectedAnswers[currentQuestionIndex] === optionIndex}
-            onChange={() => handleAnswerSelection(currentQuestionIndex, optionIndex)}
-          />
-          {option}
+    <div className="quiz-container">
+      <h2 className="quiz-title">{quiz.title}</h2>
+      <div className="quiz-form">
+        <h3 className="question-text">{question.text}</h3>
+        <div className="options-container">
+          {question.options.map((option, optionIndex) => (
+            <div key={optionIndex} className="option">
+              <input
+                type="radio"
+                name={`question${currentQuestionIndex}`}
+                checked={selectedAnswers[currentQuestionIndex] === optionIndex}
+                onChange={() => handleAnswerSelection(currentQuestionIndex, optionIndex)}
+              />
+              {option}
+            </div>
+          ))}
         </div>
-      ))}
-      <button onClick={() => handleCheckAnswers(currentQuestionIndex)}>Check Answer</button>
-      <button onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>Previous</button>
-      <button onClick={handleNextQuestion} disabled={currentQuestionIndex === quiz.questions.length - 1}>Next</button>
-      {feedback && <div>{feedback}</div>}
-      <button onClick={handleBackToHome}>Back to Home</button>
+        <div className="button-group">
+          <button className="check-answer-btn" onClick={() => handleCheckAnswers(currentQuestionIndex)}>Check Answer</button>
+          <button className="prev-btn" onClick={handlePreviousQuestion} disabled={currentQuestionIndex === 0}>Previous</button>
+          <button className="next-btn" onClick={handleNextQuestion} disabled={currentQuestionIndex === quiz.questions.length - 1}>Next</button>
+        </div>
+        {feedback && <div className="feedback">{feedback}</div>}
+        <button className="back-home-btn" onClick={handleBackToHome}>Back to Home</button>
+      </div>
     </div>
   );
 };
