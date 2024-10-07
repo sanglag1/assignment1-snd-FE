@@ -5,7 +5,11 @@ import '../styles/QuizEdit.css';
 
 const QuizEdit = () => {
   const { quizId } = useParams();
-  const [quiz, setQuiz] = useState(null);
+  const [quiz, setQuiz] = useState({
+    title: '',
+    description: '',
+    questions: [],
+  });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -53,10 +57,12 @@ const QuizEdit = () => {
         type="text" 
         value={quiz.title} 
         onChange={(e) => setQuiz({ ...quiz, title: e.target.value })} 
+        placeholder="Quiz Title"
       />
       <textarea 
         value={quiz.description} 
         onChange={(e) => setQuiz({ ...quiz, description: e.target.value })} 
+        placeholder="Quiz Description"
       />
 
       <h3>Questions:</h3>
@@ -66,6 +72,7 @@ const QuizEdit = () => {
             type="text" 
             value={question.text} 
             onChange={(e) => handleQuestionChange(qIndex, 'text', e.target.value)} 
+            placeholder="Question"
           />
 
           {question.options.map((option, optionIndex) => (
@@ -74,6 +81,7 @@ const QuizEdit = () => {
                 type="text" 
                 value={option} 
                 onChange={(e) => handleOptionChange(qIndex, optionIndex, e.target.value)} 
+                placeholder={`Option ${optionIndex + 1}`}
               />
             </div>
           ))}

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import quizService from '../services/quizService';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../styles/QuizList.css';
 
 const QuizList = () => {
   const [quizzes, setQuizzes] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchQuizzes = async () => {
@@ -26,9 +25,7 @@ const QuizList = () => {
   return (
     <div className="quiz-list-container">
       <h2 className="quiz-list-title">Quizzes</h2>
-      
       <Link to="/quizzes/create" className="create-btn">Create New Quiz</Link>
-      
       <ul className="quiz-list">
         {quizzes.map((quiz) => (
           <li key={quiz._id} className="quiz-item">
@@ -37,14 +34,12 @@ const QuizList = () => {
               <p className="quiz-description">{quiz.description}</p>
             </div>
             <div className="quiz-actions">
-              <button onClick={() => navigate(`/quizzes/${quiz._id}/edit`)} className="edit-btn">Edit</button>
+              <Link to={`/quizzes/edit/${quiz._id}`} className="edit-btn">Edit</Link>
               <button onClick={() => handleDeleteQuiz(quiz._id)} className="delete-btn">Delete</button>
             </div>
           </li>
         ))}
       </ul>
-
-      <button className="back-home-btn" onClick={() => navigate('/')}>Back to Home</button>
     </div>
   );
 };

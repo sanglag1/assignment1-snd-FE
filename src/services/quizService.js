@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const API_URL = 'https://assignment1-snd.onrender.com/api/quizzes';
+const API_URL = 'https://assignment1-snd.onrender.com/quizzes';
 
 const quizService = {
   getAllQuizzes: async () => {
     const response = await axios.get(API_URL);
-    return response.data; // Kiểm tra dữ liệu trả về có chứa `id` không
+    return response.data;
   },
   getQuizById: async (id) => {
     if (!id) throw new Error('Quiz ID is missing');

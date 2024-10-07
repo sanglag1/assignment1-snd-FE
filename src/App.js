@@ -1,10 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import QuizList from './components/QuizList';
-import QuizDetails from './components/QuizDetails';
 import QuizCreate from './components/QuizCreate';
 import QuizEdit from './components/QuizEdit';
+import QuizDetail from './components/QuizDetails';
 
 const App = () => {
   return (
@@ -12,9 +12,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/quizzes" element={<QuizList />} />
-        <Route path="/quizzes/:quizId" element={<QuizDetails />} />
         <Route path="/quizzes/create" element={<QuizCreate />} />
         <Route path="/quizzes/edit/:quizId" element={<QuizEdit />} />
+        <Route path="/quizzes/:quizId" element={<QuizDetail />} />
       </Routes>
     </Router>
   );
