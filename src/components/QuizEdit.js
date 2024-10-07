@@ -10,8 +10,13 @@ const QuizEdit = () => {
 
   useEffect(() => {
     const fetchQuiz = async () => {
-      const data = await quizService.getQuizById(quizId);
-      setQuiz(data);
+      try {
+        const data = await quizService.getQuizById(quizId);
+        setQuiz(data);
+      } catch (error) {
+        console.error("Error fetching quiz:", error);
+        alert("An error occurred while fetching the quiz. Please try again.");
+      }
     };
     fetchQuiz();
   }, [quizId]);
