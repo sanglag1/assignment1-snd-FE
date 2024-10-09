@@ -23,6 +23,13 @@ const quizService = {
   deleteQuiz: async (id) => {
     await axios.delete(`${API_URL}/${id}`);
   },
+  updateQuestion: async (quizId, questionId, questionData) => {
+    const response = await axios.put(`${API_URL}/${quizId}/questions/${questionId}`, questionData);
+    return response.data;
+  },
+  deleteQuestion: async (quizId, questionId) => {
+    await axios.delete(`${API_URL}/${quizId}/questions/${questionId}`);
+  },
 };
 
 export default quizService;

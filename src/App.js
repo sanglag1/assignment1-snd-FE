@@ -15,6 +15,7 @@ const App = () => {
         <Route path="/quizzes/create" element={<QuizCreate />} />
         <Route path="/quizzes/edit/:quizId" element={<QuizEdit />} />
         <Route path="/quizzes/:quizId" element={<QuizDetail />} />
+        <Route path="/quizzes/:quizId/questions/:questionId/edit" component={QuizEdit} />
       </Routes>
     </Router>
   );

@@ -27,12 +27,28 @@ const QuizEdit = () => {
 
   const handleUpdateQuiz = async () => {
     try {
-      await quizService.updateQuiz(quizId, quiz);
+      await quizService.updateQuiz(quizId, { title: quiz.title, description: quiz.description });
+      for (let question of quiz.questions) {
+        await quizService.updateQuestion(quizId, question._id, question);
+      }
       alert(`Quiz "${quiz.title}" updated successfully!`);
       navigate(`/quizzes/${quizId}`);
     } catch (error) {
       console.error("Error updating quiz:", error);
       alert("An error occurred while updating the quiz. Please try again.");
+    }
+  };
+
+  const handleDeleteQuestion = async (qIndex) => {
+    const questionId = quiz.questions[qIndex]._id;
+    try {
+      await quizService.deleteQuestion(quizId, questionId);
+      const updatedQuestions = quiz.questions.filter((_, index) => index !== qIndex);
+      setQuiz({ ...quiz, questions: updatedQuestions });
+      alert("Question deleted successfully!");
+    } catch (error) {
+      console.error("Error deleting question:", error);
+      alert("An error occurred while deleting the question. Please try again.");
     }
   };
 
@@ -74,7 +90,6 @@ const QuizEdit = () => {
             onChange={(e) => handleQuestionChange(qIndex, 'text', e.target.value)} 
             placeholder="Question"
           />
-
           {question.options.map((option, optionIndex) => (
             <div key={optionIndex}>
               <input 
@@ -85,7 +100,6 @@ const QuizEdit = () => {
               />
             </div>
           ))}
-
           <div>
             <strong>Correct Answer: </strong>
             <select
@@ -99,6 +113,7 @@ const QuizEdit = () => {
               ))}
             </select>
           </div>
+          <button onClick={() => handleDeleteQuestion(qIndex)}>Delete Question</button>
         </div>
       ))}
       <button onClick={handleUpdateQuiz}>Update Quiz</button>
